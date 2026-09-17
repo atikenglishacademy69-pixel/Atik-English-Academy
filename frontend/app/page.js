@@ -5,13 +5,13 @@ import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <main className="bg-[#f8f6f0] text-[#22382c] selection:bg-[#dad6c9]">
+    <main className="bg-[#f8f6f0] text-[#22382c] selection:bg-[#dad6c9] overflow-hidden ">
       
       <Navbar />
 
       <section className="w-[min(1120px,calc(100%-3rem))] max-[700px]:w-[min(100%-2rem,1120px)] mx-auto grid grid-cols-2 max-[700px]:grid-cols-1 gap-20 max-[700px]:gap-8 items-center py-20 max-[700px]:py-12 pb-24 max-[700px]:pb-16">
         <div>
-          <p className="text-[#1e593c] text-[0.75rem] font-bold uppercase">
+          <p className="z-10 text-[#1e593c] text-[0.75rem] font-bold uppercase">
             English teacher · Master trainer
           </p>
 

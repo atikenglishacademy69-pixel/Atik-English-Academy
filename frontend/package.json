@@ -1,12 +1,23 @@
 {
-  "name": "portfolio",
-  "version": "0.1.0",
+  "name": "Atik English Academy",
+  "version": "1.0.0",
   "scripts": {
     "dev": "npx next dev --webpack",
     "build": "npx next build --webpack",
     "start": "npx next start --webpack"
   },
-  
+  "contributors": [
+    {
+      "name": "Nazmus Sadat",
+      "email": "prosadat505@gmail.com",
+      "github": "https://github.com/nazmus-sadat9"
+    },
+    {
+      "name": "Tanvir Abir",
+      "email": "tanvirmdabir1@gmail.com",
+      "github": "https://github.com/tanvir-techbro"
+    }
+  ],
   "dependencies": {
     "next": "16.3.3",
     "nodemailer": "^9.0.6",

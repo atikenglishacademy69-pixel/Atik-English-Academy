@@ -5,19 +5,17 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 export default function Contact() {
-  // form states 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [msg, setMsg] = useState("");
 
-  // error states
   const [nameErr, setNameErr] = useState("");
   const [emailErr, setEmailErr] = useState("");
   const [msgErr, setMsgErr] = useState("");
 
-  // validation 
+  const [btnText, setBtnText] = useState("Send message");
+
   function isFormValid() {
-    
     let isValid = true;
 
     setNameErr("");
@@ -30,10 +28,10 @@ export default function Contact() {
     }
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-     
+
     if (!email.trim()) {
       setEmailErr("Email can't be empty.");
-
+      isValid = false; // Fixed: added missing isValid = false
     } else if (!emailRegex.test(email)) {
       setEmailErr("Enter a valid email.");
       isValid = false;
@@ -48,12 +46,12 @@ export default function Contact() {
   }
 
   async function submit(e) {
-
     e.preventDefault();
 
     if (!isFormValid()) return;
 
-    try{
+    try {
+      setBtnText("Sending...");
 
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -61,30 +59,34 @@ export default function Contact() {
         body: JSON.stringify({
           name,
           email,
-          msg
+          message: msg
         }),
       });
 
       if (response.ok) {
-        alert("Message sent successfully.");
-        setNameErr("");
-        setEmailErr("");
-        setMsgErr("");
+        setName("");
+        setEmail("");
+        setMsg("");
+
+        setBtnText("Sent");
+
+        setTimeout(() => {
+          setBtnText("Send message");
+        }, 1500);
+
       } else {
         alert("Failed to send message.");
       }
-
-    } catch (err){
+    } catch (err) {
       alert("Server error.");
+    }
   }
-}
 
   return (
     <main className="bg-[#f8f6f0] w-screen text-[#22382c] selection:bg-[#dad6c9]">
-
       <Navbar />
 
-      <section className="w-full mx-auto py-20 pb-28 md:pt-[7.5%] max-[700px]:py-12 min-h-[75vh] md:h-screen">
+      <section className="w-full mx-auto py-20 pb-28 md:pt-[7.5%] max-[700px]:py-12 min-h-[75vh]">
         <p className="pl-[5%] text-[#1e593c] text-[0.75rem] font-bold uppercase">
           Get in touch
         </p>
@@ -99,7 +101,6 @@ export default function Contact() {
 
         <div className="w-full flex justify-center items-center">
           <form onSubmit={submit} className="w-[80%] md:w-[50%] mt-8 grid gap-5">
-          
             <label className="grid gap-2 font-bold">
               Name
               <input
@@ -109,7 +110,6 @@ export default function Contact() {
                 onChange={(e) => setName(e.target.value)}
                 className="w-full border border-[#dad6c9] rounded-xl bg-[#f1ede0] p-3.5 font-normal"
               />
-
               {nameErr && <span className="text-red-600 text-sm font-normal">{nameErr}</span>}
             </label>
 
@@ -118,7 +118,7 @@ export default function Contact() {
               <input
                 name="email"
                 type="email"
-                 placeholder="EMAIL"
+                placeholder="EMAIL"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full border border-[#dad6c9] rounded-xl bg-[#f1ede0] p-3.5 font-normal"
@@ -142,9 +142,8 @@ export default function Contact() {
             <button
               className="inline-block justify-self-start mt-8 px-[1.35rem] py-[0.9rem] rounded-full bg-[#1e593c] text-[#f8faf6] font-bold cursor-pointer"
               type="submit">
-              Send message
+              {btnText}
             </button>
-
           </form>
         </div>
       </section>

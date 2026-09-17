@@ -7,7 +7,7 @@ export default function About() {
 
       <Navbar />
 
-      <section className="w-[min(1120px,calc(100%-3rem))] max-[700px]:w-[min(100%-2rem,1120px)] mx-auto py-20 md:pt-[7.5%] pb-28 max-[700px]:py-12 min-h-[75vh] md:h-screen">
+      <section className="z-10 w-[min(1120px,calc(100%-3rem))] max-[700px]:w-[min(100%-2rem,1120px)] mx-auto py-20 md:pt-[7.5%] pb-28 max-[700px]:py-12 min-h-[75vh]">
         
         <p className="text-[#1e593c] text-[0.75rem] font-bold uppercase">
           About Atik

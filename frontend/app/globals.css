@@ -50,15 +50,19 @@ body {
   @apply bg-background text-foreground;
 }
 
-.footer{
-  width: 100%;
-  font-size: clamp(0.7rem, 3vw, 1.2rem);
+.mainFooter{
   background-color: var(--primary);
   color: var(--background);
+  width: 100%;
+  padding: 2% 4%;
+  font-size: clamp(0.7rem, 3vw, 1.2rem);
+}
+
+.footer{
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 2% 4%;
   z-index: 900;
 }
 

@@ -25,7 +25,7 @@ export default function Home() {
           </p>
 
           <Link
-            href="/Contact"
+            href="/contact"
             className="inline-block mt-8 px-[1.35rem] py-[0.9rem] rounded-full bg-[#1e593c] text-[#f8faf6] font-bold">
             Contact me
           </Link>
